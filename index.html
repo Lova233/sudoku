@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>IntoStudy Cross Domain Cookie Consent</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+
+    <script>
+      var optanonCookieName = "OptanonConsent";
+      var optanonAlertBoxClosedCookieName = "OptanonAlertBoxClosed";
+      //Get Cookie Details from parent
+      window.addEventListener("message", receiveMessage, false);
+
+      function receiveMessage(event) {
+        console.log("message received");
+        if (event && event.data.OptanonConsent !== undefined) {
+          setCookie("OptanonConsent", event.data.OptanonConsent);
+          if (event.data.OptanonAlertBoxClosed) {
+            setCookie(
+              "OptanonAlertBoxClosed",
+              event.data.OptanonAlertBoxClosed
+            );
+          }
+        }
+      }
+
+      function setCookie(name, value) {
+        var date = new Date();
+        date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+        document.cookie =
+          name + "=" + value + "; path=/; expires=" + date.toUTCString() + ";";
+      }
+
+      //Send cookie details to parent
+      window.onload = function () {
+        if (getCookie(optanonCookieName)) {
+          var cookie1 = getCookie(optanonCookieName);
+          var cookie2 = getCookie(optanonAlertBoxClosedCookieName);
+          if (cookie2) {
+            parent.postMessage(
+              {
+                name: "OneTrustCookies",
+                OptanonConsent: cookie1,
+                OptanonAlertBoxClosed: cookie2,
+              },
+              "*"
+            );
+          } else {
+            parent.postMessage(
+              {
+                name: "OneTrustCookies",
+                OptanonConsent: cookie1,
+              },
+              "*"
+            );
+          }
+        } else {
+          parent.postMessage(
+            {
+              name: "OneTrustCookies",
+            },
+            "*"
+          );
+        }
+      };
+
+      function getCookie(name) {
+        var nameEq = name + "=",
+          ca = document.cookie.split(";"),
+          i,
+          c;
+
+        for (i = 0; i < ca.length; i += 1) {
+          c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1, c.length);
+          }
+          if (c.indexOf(nameEq) == 0) {
+            return c.substring(nameEq.length, c.length);
+          }
+        }
+        return "";
+      }
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <h1>Cross Domain content for IntoStudy and StudentApplicationWebApp</h1>
+    <iframe src="https://https://lemon-rock-0dbcebb03.azurestaticapps.net/crossDomainConsent.html"></iframe>
+    <script src="" async defer></script>
+  </body>
+</html>
