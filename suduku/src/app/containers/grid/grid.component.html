@@ -1,0 +1,30 @@
+<div class="grid">
+    <ng-container *ngFor="let row of grid; let rowIndex = index" >
+      <div class="row" [id]="'row'+rowIndex.toString()">
+        <ng-container *ngFor="let blockValue of row; let blockIndex = index">
+            <!-- <input
+              tabindex="0"
+              [id]="rowIndex.toString()+blockIndex.toString()"
+              [disabled]="num !== 0" 
+              (click)="highlightArea(rowIndex, blockIndex)"
+              (onblur)="removeHilightToArea()" 
+              (change)="addNumberToGrid($event, rowIndex, blockIndex)"
+              type="number" maxlength="1" 
+              [value]="num !== 0 ? num : null"> -->
+          <app-block
+            [block]="blockValue !== 0 ? blockValue : null" 
+            [blockId]="rowIndex.toString()+blockIndex.toString()"
+            [isDisabled]="blockValue !== 0"
+            [isHiglited]="false"
+            (newBlockValue)="addNumberToGrid($event)"
+            (addHighlightValue)="highlightArea($event)"
+            (removeHighlightValue)="removeHilightToArea($event)"
+            [isAssigned]="blockValue !== 0 ? true : false"
+            >
+          </app-block>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  
+  

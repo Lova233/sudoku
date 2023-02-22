@@ -1,0 +1,44 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 3px;
+    margin-top: 50px;
+
+    .row{ 
+        display: flex;
+
+    
+        .block {
+            input {
+                max-width: 20px;
+                text-align: center;
+                padding: 10px;
+                border: 1px solid;
+                margin: 1px;
+                border-radius: 3px;
+
+                &[disabled] {
+                    background-color: rgb(187, 185, 185);
+                }
+            }
+
+          
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+        }
+    }
+}
+
+#row3, #row6{
+    border-top: 3px solid;
+}
+
+#block02, #block12, #block22, #block05, #block15, #block25,
+#block32, #block42, #block52, #block35, #block45, #block55,
+#block52, #block62, #block72, #block82, #block65, #block75, #block85 {
+    border-right: 3px solid;
+}

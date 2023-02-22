@@ -1,0 +1,17 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 3px;
+    margin-top: 50px;
+
+    .row{ 
+        display: flex;
+
+    }
+}
+
+
+#row3, #row6{
+    border-top: 3px solid;
+}

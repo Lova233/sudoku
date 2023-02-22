@@ -1,0 +1,45 @@
+.block {
+    input {
+        max-width: 20px;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid;
+        margin: 1px;
+        border-radius: 3px;
+
+        // &[disabled] {
+        //     background-color: rgb(187, 185, 185);
+        // }
+    }
+
+    .isAssigned {
+        background-color: rgb(187, 185, 185);
+    }
+
+    .isHiglited {
+        background-color: rgb(113, 113, 219);
+    }
+
+  
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+
+}
+
+    
+
+
+.notAllowed {
+    cursor: not-allowed;
+}
+
+
+#block02, #block12, #block22, #block05, #block15, #block25,
+#block32, #block42, #block52, #block35, #block45, #block55,
+#block52, #block62, #block72, #block82, #block65, #block75, #block85 {
+    border-right: 3px solid;
+}

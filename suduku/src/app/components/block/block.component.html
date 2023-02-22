@@ -1,0 +1,17 @@
+<div class="block" tabindex="0" [id]="'block'+blockId">
+    <input
+        tabindex="0"
+        [id]="blockId"
+        [disabled]="isDisabled" 
+        type="number" 
+        maxlength="1" 
+        (change)="performMove('addValue', $event)"
+        (blur)="performMove('removeHighLightArea', $event)"
+        (click)="performMove('highLightArea', $event)"
+        [(ngModel)]="block"
+        min="1"
+        max="9"
+        [ngClass]="{'isAssigned': isAssigned, 'isHiglited': isHiglited}"
+        >
+</div>
+
